@@ -12,7 +12,7 @@ import android.opengl.GLUtils;
 import android.util.Log;
 public class Mesh 
 {
-	public FloatBuffer mVerticesBuffer = null;
+	private FloatBuffer mVerticesBuffer = null;
 	private ShortBuffer mIndicesBuffer = null;
 	private FloatBuffer mTextureBuffer; // New variable.
 	private int mTextureId = -1; // New variable.
@@ -21,7 +21,7 @@ public class Mesh
 	private int mNumOfIndices = -1;
 //	private final float[] mRGBA = new float[] { 1.0f, 1.0f, 1.0f, 1.0f };
 	private FloatBuffer mColorBuffer = null;
-	public void drawScal(GL10 gl,float x,float y,float sx, float sy) 
+	void drawScal(GL10 gl, float x, float y, float sx, float sy)
 	{
 		gl.glPushMatrix();
 		gl.glFrontFace(GL10.GL_CCW);

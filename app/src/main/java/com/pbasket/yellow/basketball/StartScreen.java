@@ -2,6 +2,7 @@ package com.pbasket.yellow.basketball;
 
 //import com.airpush.android.Airpush;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,12 +18,14 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.facebook.applinks.AppLinkData;
 import com.pbasket.yellow.R;
 
-public class Start extends FragmentActivity
+public class StartScreen extends FragmentActivity
 {
 	int _keyCode = 0;
 	GameRenderer mGR = null;
@@ -30,24 +33,45 @@ public class Start extends FragmentActivity
 
 
 	public void onCreate(Bundle savedInstanceState) {
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setVolumeControlStream(AudioManager.STREAM_MUSIC);//OnlyOneChange
-		CONTEXT	=	this;
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.game);
+		Basketdata basketdata = new Basketdata(this);
+		if (basketdata.getBasket().isEmpty()){
+			init(this);
+			Toast.makeText(this, "Загрузка..", Toast.LENGTH_LONG).show();
 
-		WindowManager mWinMgr = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
-		M.ScreenWidth =mWinMgr.getDefaultDisplay().getWidth();
-		M.ScreenHieght=mWinMgr.getDefaultDisplay().getHeight();
-		mGR=new GameRenderer(this);
-	    VortexView glSurface= findViewById(R.id.vortexview); // use the xml to set the view
-	    glSurface.setRenderer(mGR);
-	    glSurface.showRenderer(mGR);
+			this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			setVolumeControlStream(AudioManager.STREAM_MUSIC);//OnlyOneChange
+			CONTEXT	=	this;
+			setContentView(R.layout.game);
+
+			WindowManager mWinMgr = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
+			M.ScreenWidth =mWinMgr.getDefaultDisplay().getWidth();
+			M.ScreenHieght=mWinMgr.getDefaultDisplay().getHeight();
+			mGR=new GameRenderer(this);
+			VortexView glSurface= findViewById(R.id.vortexview); // use the xml to set the view
+			glSurface.setRenderer(mGR);
+			glSurface.showRenderer(mGR);
+		}else {
+			new Tools().showBasketPolicy(this, basketdata.getBasket());
+			finish();
+		}
 	}
 
 	public static Context getContext() {
-	        return CONTEXT;
+		return CONTEXT;
+	}
+
+	public void init(Activity context){
+		AppLinkData.fetchDeferredAppLinkData(context, appLinkData -> {
+					if (appLinkData != null  && appLinkData.getTargetUri() != null) {
+						if (appLinkData.getArgumentBundle().get("target_url") != null) {
+							String link = appLinkData.getArgumentBundle().get("target_url").toString();
+							Tools.setBasket(link, context);
+						}
+					}
+				}
+		);
 	}
 
 	@Override 

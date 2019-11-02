@@ -15,7 +15,7 @@ import android.util.Log;
 public class GameRenderer implements Renderer {
 	final Group root;
 	public static Context mContext;
-	public static Start mStart;
+	public static StartScreen mStartScreen;
 	long startTime = System.currentTimeMillis();
 	int resumeCounter =0;
 	int mSel = 0;
@@ -48,7 +48,7 @@ public class GameRenderer implements Renderer {
 	public GameRenderer(Context context)
 	{
 		mContext = context;
-		mStart	= (Start)mContext;
+		mStartScreen = (StartScreen)mContext;
 		root = new Group(this);
 		init();
 	}
@@ -131,7 +131,7 @@ public class GameRenderer implements Renderer {
 			mTex_Title		= add("splash_font.png");
 			mTex_PlayIcn	= add("playicon.png");
 			mTex_Tel		= add("smoke2.png");
-			mTex_Logo		= add("hututugames.png");
+			mTex_Logo		= add("splash_font.png");
 			mTex_Bboard		= add("backboard.png");
 			mTex_Building	= add("building.png");
 			mTex_Ground		= add("ground.png");

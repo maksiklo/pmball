@@ -17,7 +17,6 @@ package com.pbasket.yellow.basketball;
 //import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 //import android.content.SharedPreferences;
 //import android.os.Bundle;
@@ -154,7 +153,7 @@ public class MainActivity {
 		setWaitScreen(true);
 		Log.d(TAG, "Launching purchase flow for gas.");
 		String payload = "";
-		mHelper.launchPurchaseFlow(GameRenderer.mStart, SKU_10000, RC_REQUEST,mPurchaseFinishedListener, payload);
+		mHelper.launchPurchaseFlow(GameRenderer.mStartScreen, SKU_10000, RC_REQUEST,mPurchaseFinishedListener, payload);
 	}
 */
 	// User clicked the "Buy Gas" button
@@ -170,7 +169,7 @@ public class MainActivity {
 		setWaitScreen(true);
 		Log.d(TAG, "Launching purchase flow for gas.");
 		String payload = "";
-		mHelper.launchPurchaseFlow(GameRenderer.mStart, SKU_150000, RC_REQUEST,mPurchaseFinishedListener, payload);
+		mHelper.launchPurchaseFlow(GameRenderer.mStartScreen, SKU_150000, RC_REQUEST,mPurchaseFinishedListener, payload);
 	}
 
 	public void onBuyGold350000(View arg0) {
@@ -178,7 +177,7 @@ public class MainActivity {
 		setWaitScreen(true);
 		Log.d(TAG, "Launching purchase flow for gas.");
 		String payload = "";
-		mHelper.launchPurchaseFlow(GameRenderer.mStart, SKU_350000, RC_REQUEST, mPurchaseFinishedListener, payload);
+		mHelper.launchPurchaseFlow(GameRenderer.mStartScreen, SKU_350000, RC_REQUEST, mPurchaseFinishedListener, payload);
 	}
 */
 	/*******************************************************************************************/
@@ -210,7 +209,7 @@ public class MainActivity {
 		 */
 //		String payload = "";
 
-//		mHelper.launchPurchaseFlow(GameRenderer.mStart, SKU_350000, RC_REQUEST,mPurchaseFinishedListener, payload);
+//		mHelper.launchPurchaseFlow(GameRenderer.mStartScreen, SKU_350000, RC_REQUEST,mPurchaseFinishedListener, payload);
 	}
 
 	// User clicked the "Buy Gas" button
@@ -235,7 +234,7 @@ public class MainActivity {
 		 * should carefully generate this.
 		 */
 //		String payload = "";
-//		mHelper.launchPurchaseFlow(GameRenderer.mStart, SKU_150000, RC_REQUEST,mPurchaseFinishedListener, payload);
+//		mHelper.launchPurchaseFlow(GameRenderer.mStartScreen, SKU_150000, RC_REQUEST,mPurchaseFinishedListener, payload);
 	}
 
 	// User clicked the "Upgrade to Premium" button.
@@ -252,7 +251,7 @@ public class MainActivity {
 		 */
 //		String payload = "";
 
-//		mHelper.launchPurchaseFlow(GameRenderer.mStart, SKU_10000, RC_REQUEST,
+//		mHelper.launchPurchaseFlow(GameRenderer.mStartScreen, SKU_10000, RC_REQUEST,
 //				mPurchaseFinishedListener, payload);
 	}
 
@@ -302,7 +301,7 @@ public class MainActivity {
 	}
 
 	void alert(String message) {
-		AlertDialog.Builder bld = new AlertDialog.Builder(GameRenderer.mStart);
+		AlertDialog.Builder bld = new AlertDialog.Builder(GameRenderer.mStartScreen);
 		bld.setMessage(message);
 		bld.setNeutralButton("OK", null);
 		Log.d(TAG, "Showing alert dialog: " + message);
@@ -317,7 +316,7 @@ public class MainActivity {
 		 * simply store the data using a SharedPreferences.
 		 */
 
-		SharedPreferences.Editor spe = GameRenderer.mStart.getPreferences(
+		SharedPreferences.Editor spe = GameRenderer.mStartScreen.getPreferences(
 				Context.MODE_PRIVATE).edit();
 		spe.putInt("tank", mTank);
 		spe.commit();
@@ -325,7 +324,7 @@ public class MainActivity {
 	}
 
 	void loadData() {
-		SharedPreferences sp = GameRenderer.mStart
+		SharedPreferences sp = GameRenderer.mStartScreen
 				.getPreferences(Context.MODE_PRIVATE);
 		mTank = sp.getInt("tank", 2);
 		Log.d(TAG, "Loaded data: tank = " + String.valueOf(mTank));

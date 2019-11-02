@@ -2,12 +2,7 @@ package com.pbasket.yellow.basketball;
 import javax.microedition.khronos.opengles.GL10;
 
 
-import android.content.Intent;
-import android.net.Uri;
 import android.view.MotionEvent;
-import android.widget.Toast;
-
-import com.pbasket.yellow.R;
 
 public class Group extends Mesh
 {
@@ -16,13 +11,13 @@ public class Group extends Mesh
 	
 	int Counter =0;
 	float sx,sy;
-	public void setting(){float ud=.01f;switch (GameRenderer.mStart._keyCode) {case 1:sy-=ud;break;case 2:sy+=ud;break;case 3:sx-=ud;break;case 4:sx+=ud;break;}System.out.println(M.GameScreen+"~~~~~~~~~~~~~~~      "+sx+"~~~~~~~~~~~~       "+sy);}
+	public void setting(){float ud=.01f;switch (GameRenderer.mStartScreen._keyCode) {case 1:sy-=ud;break;case 2:sy+=ud;break;case 3:sx-=ud;break;case 4:sx+=ud;break;}System.out.println(M.GameScreen+"~~~~~~~~~~~~~~~      "+sx+"~~~~~~~~~~~~       "+sy);}
 	public boolean Handle(MotionEvent event){
-		if(CircRectsOverlap(-.8f,0.0f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStart._keyCode = 3;
-		if(CircRectsOverlap(0.8f,0.0f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStart._keyCode = 4;
-		if(CircRectsOverlap(-.0f,-.8f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStart._keyCode = 1;
-		if(CircRectsOverlap(0.0f,0.8f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStart._keyCode = 2;
-		if(event.getAction()== MotionEvent.ACTION_UP)GameRenderer.mStart._keyCode = 0;
+		if(CircRectsOverlap(-.8f,0.0f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStartScreen._keyCode = 3;
+		if(CircRectsOverlap(0.8f,0.0f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStartScreen._keyCode = 4;
+		if(CircRectsOverlap(-.0f,-.8f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStartScreen._keyCode = 1;
+		if(CircRectsOverlap(0.0f,0.8f,.1f, .1f, screen2worldX(event.getX()), screen2worldY(event.getY()), .1f))GameRenderer.mStartScreen._keyCode = 2;
+		if(event.getAction()== MotionEvent.ACTION_UP)GameRenderer.mStartScreen._keyCode = 0;
 		return true;
 	}
 	
@@ -119,7 +114,7 @@ public class Group extends Mesh
 	}
 	
 	
-	/***************************Join Start**********************************/
+	/***************************Join StartScreen**********************************/
 	
 	void Draw_Join(GL10 gl) {
 		DrawTexture(gl, mGR.mTex_BG, 0, 0);
@@ -149,7 +144,7 @@ public class Group extends Mesh
 	/***************************Join End************************************/
 	
 	
-	/***************************OverPause Start**********************************/
+	/***************************OverPause StartScreen**********************************/
 	
 	void Draw_OverPause(GL10 gl) {
 		DrawTexture(gl, mGR.mTex_BG, 0, 0);
@@ -221,7 +216,7 @@ public class Group extends Mesh
 	/***************************OverPause End************************************/
 	
 	
-	/***************************About Start**********************************/
+	/***************************About StartScreen**********************************/
 	
 	void Draw_About(GL10 gl) {
 		DrawTexture(gl, mGR.mTex_BG, 0, 0);
@@ -243,7 +238,7 @@ public class Group extends Mesh
 	
 	/***************************About End************************************/
 	
-	/***************************Menu Start**********************************/
+	/***************************Menu StartScreen**********************************/
 	float menux = -.48f;
 	boolean move = true;
 
@@ -349,7 +344,7 @@ public class Group extends Mesh
 	
 	
 	
-	/***************************Splash Start**********************************/
+	/***************************Splash StartScreen**********************************/
 	float anis=1,anivs=.001f;
 	void Draw_Splash(GL10 gl) {
 		DrawTexture(gl, mGR.mTex_BG, 0, 0);
@@ -377,7 +372,7 @@ public class Group extends Mesh
 	
 	/***************************Splash End************************************/
 	
-	/***************************GamePlay Start**********************************/
+	/***************************GamePlay StartScreen**********************************/
 	void setAnimation(float x, float y) {
 		for (int i = 0; i < mGR.mAni.length; i++) {
 			if (mGR.mAni[i].no <= 0) {

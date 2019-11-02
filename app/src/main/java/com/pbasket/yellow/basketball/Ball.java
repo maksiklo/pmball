@@ -1,7 +1,5 @@
 package com.pbasket.yellow.basketball;
 
-import com.pbasket.yellow.R;
-
 public class Ball {
 	
 	boolean move = false;
@@ -62,7 +60,7 @@ public class Ball {
 							anim =8;
 							combo++;
 							if(type!=4)
-								GameRenderer.mStart.mGR.root.score();
+								GameRenderer.mStartScreen.mGR.root.score();
 						}
 					} else if(y>.85f){
 						rev = 2;
@@ -84,7 +82,7 @@ public class Ball {
 						}
 					}
 					if(type == 4 && CircRectsOverlap(tx, ty, .10f, .08, x, y, .05f)){
-						GameRenderer.mStart.mGR.root.score();
+						GameRenderer.mStartScreen.mGR.root.score();
 						tx =-100;
 					}
 					if (type != 4) {
@@ -127,7 +125,7 @@ public class Ball {
 				xtime = M.mRand.nextInt(3);
 				if(type == 1 || type > 2){
 					if(mBalls<=0)
-						GameRenderer.mStart.mGR.root.gameOver();
+						GameRenderer.mStartScreen.mGR.root.gameOver();
 				}
 			}
 			if(sy>y)
@@ -140,13 +138,13 @@ public class Ball {
 			anim--;
 			if (anim == 1) {
 				if (type == 0) {
-					GameRenderer.mStart.mGR.gametime += 1000 * (xtime + 3);
-					GameRenderer.mStart.mGR.mTimeAni.set(0, .4f, xtime < 2 ? (xtime + 2) : (xtime + 3));
+					GameRenderer.mStartScreen.mGR.gametime += 1000 * (xtime + 3);
+					GameRenderer.mStartScreen.mGR.mTimeAni.set(0, .4f, xtime < 2 ? (xtime + 2) : (xtime + 3));
 					xtime = 3;
 				}
 				if (combo > 2)
 				{
-					GameRenderer.mStart.mGR.mComboAni.set(1, .4f, combo);
+					GameRenderer.mStartScreen.mGR.mComboAni.set(1, .4f, combo);
 				}
 			}
 		}

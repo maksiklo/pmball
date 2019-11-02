@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">PMBall</string>
+    <string name="app_name">PMball</string>
+    <string name="facebook_app_id">1334967953337134</string>
+    <string name="fb_login_protocol_scheme">fb1334967953337134</string>
+    <string name="push">It\'s time!</string>
 </resources>

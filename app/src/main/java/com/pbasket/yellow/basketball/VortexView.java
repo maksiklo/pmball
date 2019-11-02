@@ -9,14 +9,14 @@ import android.view.MotionEvent;
 public class VortexView extends GLSurfaceView 
 {
 	public GameRenderer _renderer; 
-	public Start mStart = null;
+	public StartScreen mStartScreen = null;
 	public VortexView(Context context) { 
 		super(context);
-		mStart = (Start)context;
+		mStartScreen = (StartScreen)context;
 	}
 	public VortexView(Context context, AttributeSet attrs) { 
 		super(context, attrs);
-		mStart = (Start)context;
+		mStartScreen = (StartScreen)context;
 	}
 	public void showRenderer(GameRenderer renderer){ 
 		this._renderer=renderer;        
